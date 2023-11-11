@@ -11,6 +11,7 @@ public class MouseMove : MonoBehaviour
     }
 
     private Transform holdObject = null;
+    private Vector3 startPosition = Vector3.zero;
 
     void Update()
     {
@@ -46,10 +47,12 @@ public class MouseMove : MonoBehaviour
                 if (targetObject != null && targetObject.gameObject.layer == 6)
                 {
                     holdObject = targetObject.transform;
+                    startPosition = holdObject.position;
                 }
             }
             else
             {
+                CheckLocation();
                 holdObject = null;
             }
         }
@@ -59,16 +62,42 @@ public class MouseMove : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
-            if (targetObject != null && targetObject.gameObject.layer == 6)
+            if(holdObject == null)
             {
-                holdObject = targetObject.transform;
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+                if (targetObject != null && targetObject.gameObject.layer == 6)
+                {
+                    holdObject = targetObject.transform;
+                    startPosition = holdObject.position;
+                }
             }
         }
         if(Input.GetMouseButtonUp(0))
         {
-            holdObject = null;
+            if(holdObject != null)
+            {
+                CheckLocation();
+                holdObject = null;
+            }
+        }
+    }
+
+    void CheckLocation()
+    {
+        List<Collider2D> results = new List<Collider2D>();
+        ContactFilter2D contactFilter2D = new ContactFilter2D();
+        Physics2D.OverlapCollider(holdObject.GetComponent<Collider2D>(), contactFilter2D, results);
+        if(results.Count > 0)
+        {
+            if (results.Count > 1 && results[results.Count - 1].name == "Platter")
+            {
+                if (results.Count > 1)
+                {
+                    holdObject.transform.position = startPosition;
+                }
+                
+            }
         }
     }
 }
