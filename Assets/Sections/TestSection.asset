@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e174772b6887d024bae868cb0f5c0b08, type: 3}
   m_Name: TestSection
   m_EditorClassIdentifier: 
-  timeToComplete: 10
-  cameraPosition: {x: 54.8, y: 0, z: -10}
+  timeToComplete: 3
+  cameraPosition: {x: 55, y: 0, z: -10}

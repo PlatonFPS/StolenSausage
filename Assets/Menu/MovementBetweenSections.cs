@@ -8,6 +8,7 @@ public class MovementBetweenSections : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private int numOfKeys;
     [SerializeField] List<Transform> playerPos;
+    [SerializeField] ScoreCount scoreCount;
     private float keysPressed = 0;
     private int indexPos = 0;
     public bool canWalk = true;
@@ -29,8 +30,17 @@ public class MovementBetweenSections : MonoBehaviour
             {
                 keysPressed = 0;
                 indexPos += 1;
+                Debug.Log(indexPos);
                 canWalk = false;
-                sectionControl.SwitchSections();
+                if (indexPos < playerPos.Count - 1)
+                {
+
+                    sectionControl.SwitchSections();
+                }
+                else
+                {
+                    scoreCount.CalculateScore();
+                }
             }
         }
     }
@@ -40,6 +50,5 @@ public class MovementBetweenSections : MonoBehaviour
         Vector3 start = playerPos[indexPos].position;
         Vector3 end = playerPos[indexPos + 1].position;
         player.position = Vector3.Lerp(start, end, interpolationRatio);
-        Debug.Log($"{Vector3.Lerp(start, end, interpolationRatio)} = {start} -> {end}");
     }
 }

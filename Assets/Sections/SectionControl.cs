@@ -16,9 +16,9 @@ public class SectionControl : MonoBehaviour
     public void SwitchSections()
     {
         camera.transform.position = sections[indexSection].cameraPosition;
-        indexSection++;
-        timer = 10f;
+        timer = sections[indexSection].timeToComplete;
         timerIsActive = true;
+        indexSection++;
     }
     public void SwitchToMovement()
     {
