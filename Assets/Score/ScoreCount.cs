@@ -7,13 +7,13 @@ using UnityEngine;
 public class ScoreCount : MonoBehaviour
 {
     [SerializeField] Transform camera;
-    [SerializeField] Vector3 cameraPos;
+    [SerializeField] Transform cameraPos;
     [SerializeField] private TMP_Text scoreText;
     
 
     public void CalculateScore()
     {
-        camera.transform.position = cameraPos;
+        camera.transform.position = cameraPos.position;
         int temp = 3;
         string score = $"Your Score is {temp}";
         scoreText.text = score;

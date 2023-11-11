@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToComplete: 3
   cameraPosition: {x: 55, y: 0, z: -10}
+  platterStart: {x: 50.85, y: -1.85, z: 0}
+  platterEnd: {x: 59.57, y: -1.85, z: 0}

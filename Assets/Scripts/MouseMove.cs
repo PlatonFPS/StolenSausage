@@ -63,8 +63,7 @@ public class MouseMove : MonoBehaviour
             }
             else
             {
-                CheckLocation();
-                holdObject = null;
+                DropObject();
             }
         }
     }
@@ -87,9 +86,17 @@ public class MouseMove : MonoBehaviour
         {
             if(holdObject != null)
             {
-                CheckLocation();
-                holdObject = null;
+                DropObject();
             }
+        }
+    }
+
+    public void DropObject()
+    {
+        if(holdObject != null)
+        {
+            CheckLocation();
+            holdObject = null;
         }
     }
 
