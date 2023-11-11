@@ -10,7 +10,7 @@ public class MovementBetweenSections : MonoBehaviour
     [SerializeField] List<Transform> playerPos;
     private float keysPressed = 0;
     private int indexPos = 0;
-    private bool canWalk = true;
+    public bool canWalk = true;
     private SectionControl sectionControl;
     private void Awake()
     {
