@@ -10,6 +10,9 @@ public class MouseMove : MonoBehaviour
         //PlayerPrefs.Save();
     }
 
+    [SerializeField]
+    private Platter platter = null;
+
     private Transform holdObject = null;
     private Vector3 startPosition = Vector3.zero;
 
@@ -90,13 +93,20 @@ public class MouseMove : MonoBehaviour
         Physics2D.OverlapCollider(holdObject.GetComponent<Collider2D>(), contactFilter2D, results);
         if(results.Count > 0)
         {
-            if (results.Count > 1 && results[results.Count - 1].name == "Platter")
+            if (results[results.Count - 1].name == "Platter")
             {
                 if (results.Count > 1)
                 {
                     holdObject.transform.position = startPosition;
                 }
-                
+                else
+                {
+                    platter.AddObject(holdObject.gameObject);
+                }
+            }
+            else
+            {
+                holdObject.transform.position = startPosition;
             }
         }
     }

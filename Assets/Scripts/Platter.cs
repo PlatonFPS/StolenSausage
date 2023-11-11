@@ -13,7 +13,8 @@ public class Platter : MonoBehaviour
 
     public void AddObject(GameObject food)
     {
-
+        foods.Add(food);
+        food.transform.parent = transform;
     }
 
     public void RemoveObjec(GameObject food)
