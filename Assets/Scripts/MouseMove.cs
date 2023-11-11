@@ -6,7 +6,7 @@ public class MouseMove : MonoBehaviour
 {
     private void Awake()
     {
-        //PlayerPrefs.SetInt("ToggleDrag", 1);
+        //PlayerPrefs.SetInt("ToggleDrag", 0);
         //PlayerPrefs.Save();
     }
 
@@ -17,6 +17,10 @@ public class MouseMove : MonoBehaviour
         if(PlayerPrefs.GetInt("ToggleDrag") == 1)
         {
             ToggleDrag();
+        }
+        else
+        {
+            HoldDrag();
         }
         if(holdObject != null)
         {
@@ -48,6 +52,23 @@ public class MouseMove : MonoBehaviour
             {
                 holdObject = null;
             }
+        }
+    }
+
+    void HoldDrag()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
+            if (targetObject != null && targetObject.gameObject.layer == 6)
+            {
+                holdObject = targetObject.transform;
+            }
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            holdObject = null;
         }
     }
 }
