@@ -39,6 +39,16 @@ public class MouseMove : MonoBehaviour
         holdObject.transform.position = mousePosition;
     }
 
+    void PickUpObject(Collider2D targetObject)
+    {
+        holdObject = targetObject.transform;
+        startPosition = holdObject.position;
+        if (holdObject.GetComponent<FoodState>().onPlatter)
+        {
+            platter.RemoveObject(holdObject.gameObject);
+        }
+    }
+
     void ToggleDrag()
     {
         if (Input.GetMouseButtonDown(0))
@@ -49,8 +59,7 @@ public class MouseMove : MonoBehaviour
                 Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
                 if (targetObject != null && targetObject.gameObject.layer == 6)
                 {
-                    holdObject = targetObject.transform;
-                    startPosition = holdObject.position;
+                    PickUpObject(targetObject);
                 }
             }
             else
@@ -71,8 +80,7 @@ public class MouseMove : MonoBehaviour
                 Collider2D targetObject = Physics2D.OverlapPoint(mousePosition);
                 if (targetObject != null && targetObject.gameObject.layer == 6)
                 {
-                    holdObject = targetObject.transform;
-                    startPosition = holdObject.position;
+                    PickUpObject(targetObject);
                 }
             }
         }

@@ -14,11 +14,15 @@ public class Platter : MonoBehaviour
     public void AddObject(GameObject food)
     {
         foods.Add(food);
+        food.GetComponent<FoodState>().onPlatter = true;
+        food.GetComponent<FoodState>().prevParent = food.transform.parent;
         food.transform.parent = transform;
     }
 
-    public void RemoveObjec(GameObject food)
+    public void RemoveObject(GameObject food)
     {
-
+        foods.Remove(food);
+        food.GetComponent<FoodState>().onPlatter = false;
+        food.transform.parent = food.GetComponent<FoodState>().prevParent;
     }
 }
