@@ -13,7 +13,7 @@ public class MouseMove : MonoBehaviour
     [SerializeField] private Platter platter = null;
 
     private Transform holdObject = null;
-    private Vector3 startPosition = Vector3.zero;
+    
 
     void Update()
     {
@@ -38,10 +38,13 @@ public class MouseMove : MonoBehaviour
         holdObject.transform.position = mousePosition;
     }
 
+    private Vector3 startPosition = Vector3.zero;
+    private Transform startParent = null;
     void PickUpObject(Collider2D targetObject)
     {
         holdObject = targetObject.transform;
-        startPosition = holdObject.position;
+        startParent = holdObject.parent;
+        startPosition = holdObject.localPosition;
         if (holdObject.GetComponent<FoodState>().onPlatter)
         {
             platter.RemoveObject(holdObject.gameObject);
@@ -107,21 +110,34 @@ public class MouseMove : MonoBehaviour
         Physics2D.OverlapCollider(holdObject.GetComponent<Collider2D>(), contactFilter2D, results);
         if(results.Count > 0)
         {
-            if (results[results.Count - 1].name == "Platter")
+            if(results.Count > 1)
             {
-                if (results.Count > 1)
+                if (results[results.Count - 2].name == "Platter" && results[results.Count - 1].name == "Table")
                 {
-                    holdObject.transform.position = startPosition;
+                    if (results.Count > 2)
+                    {
+                        ResetPosition();
+                    }
+                    else
+                    {
+                        platter.AddObject(holdObject.gameObject);
+                    }
                 }
                 else
                 {
-                    platter.AddObject(holdObject.gameObject);
+                    ResetPosition();
                 }
             }
             else
             {
-                holdObject.transform.position = startPosition;
+                ResetPosition();
             }
         }
+    }
+
+    void ResetPosition()
+    {
+        holdObject.transform.parent = startParent;
+        holdObject.transform.localPosition = startPosition;
     }
 }
