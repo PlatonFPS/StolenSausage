@@ -10,8 +10,7 @@ public class MouseMove : MonoBehaviour
         //PlayerPrefs.Save();
     }
 
-    [SerializeField]
-    private Platter platter = null;
+    [SerializeField] private Platter platter = null;
 
     private Transform holdObject = null;
     private Vector3 startPosition = Vector3.zero;
