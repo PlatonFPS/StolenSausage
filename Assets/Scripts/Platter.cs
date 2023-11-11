@@ -14,6 +14,7 @@ public class Platter : MonoBehaviour
     public void AddObject(GameObject food)
     {
         //foods.Add(food);
+        Debug.Log("Added");
         food.GetComponent<FoodState>().onPlatter = true;
         food.GetComponent<FoodState>().prevParent = food.transform.parent;
         food.transform.parent = transform;
@@ -21,6 +22,7 @@ public class Platter : MonoBehaviour
 
     public void RemoveObject(GameObject food)
     {
+        Debug.Log("Removed");
         //foods.Remove(food);
         food.GetComponent<FoodState>().onPlatter = false;
         food.transform.parent = food.GetComponent<FoodState>().prevParent;
