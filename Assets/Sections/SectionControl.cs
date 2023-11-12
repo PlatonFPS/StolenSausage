@@ -20,6 +20,7 @@ public class SectionControl : MonoBehaviour
     [SerializeField] MouseMove mouseMove;
     public void SwitchToMovement()
     {
+        Debug.Log(timer);
         mouseMove.DropObject();
         camera.transform.position = cameraPos;
         GetComponent<MovementBetweenSections>().canWalk = true;
