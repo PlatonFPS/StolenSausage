@@ -118,8 +118,12 @@ public class MouseMove : MonoBehaviour
                     {
                         if(holdObject.tag == "Rag" && results[0].tag == "Sdoba")
                         {
-                            
-                            return;
+                            if (!results[0].GetComponent<FoodState>().concealed)
+                            {
+                                results[0].GetComponent<RagWrap>().WrapInRag();
+                                holdObject.gameObject.SetActive(false);
+                                return;
+                            }
                         }
                     }
                 }

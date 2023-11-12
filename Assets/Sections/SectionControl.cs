@@ -13,7 +13,6 @@ public class SectionControl : MonoBehaviour
     {
         indexSection++;
         cameraPos = camera.position;
-        Debug.Log("SwitchSections");
         camera.transform.position = sections[indexSection].cameraPosition;
         timer = sections[indexSection].timeToComplete;
         timerIsActive = true;
@@ -22,7 +21,6 @@ public class SectionControl : MonoBehaviour
     public void SwitchToMovement()
     {
         mouseMove.DropObject();
-        Debug.Log("SwitchMovement");
         camera.transform.position = cameraPos;
         GetComponent<MovementBetweenSections>().canWalk = true;
     }

@@ -17,7 +17,6 @@ public class ScoreCount : MonoBehaviour
     public void CalculateScore()
     {
         VisualizeScore();
-        Debug.Log("CalculateScore");
         camera.position = cameraPos.position;
     }
     private bool sousagePresent = false;
