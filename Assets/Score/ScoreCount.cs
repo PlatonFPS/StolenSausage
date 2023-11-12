@@ -144,6 +144,8 @@ public class ScoreCount : MonoBehaviour
     [SerializeField] GameObject oneStar;
     [SerializeField] GameObject twoStar;
     [SerializeField] GameObject threeStar;
+    [SerializeField] GameObject money;
+    [SerializeField] GameObject wasted;
     private void VisualizeScore()
     {
         if(sausagePresent)
@@ -224,17 +226,28 @@ public class ScoreCount : MonoBehaviour
                 score += 1.5f;
                 break;
         }
-        switch (score)
+        if(noMoney)
         {
-            case <= 2f:
-                oneStar.SetActive(true);
-                break;
-            case <= 4f:
-                twoStar.SetActive(true);
-                break;
-            case <= 5f:
-                threeStar.SetActive(true);
-                break;
+            money.SetActive(true);
+        }
+        else if (busted)
+        {
+            wasted.SetActive(true);
+        }
+        else
+        {
+            switch (score)
+            {
+                case <= 2f:
+                    oneStar.SetActive(true);
+                    break;
+                case <= 4f:
+                    twoStar.SetActive(true);
+                    break;
+                case <= 5f:
+                    threeStar.SetActive(true);
+                    break;
+            }
         }
     }
 }
