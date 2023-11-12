@@ -60,6 +60,8 @@ public class ScoreCount : MonoBehaviour
                     }
                 }
                 if (food.tag == "Sausage") moneySpent += sausagePrice;
+                if (food.tag == "Spoon") spoon = true;
+                if (food.tag == "Fork") fork = true;
             }
         }
         int max = salad;
