@@ -26,11 +26,10 @@ public class MovementBetweenSections : MonoBehaviour
             keysPressed += 1;
             float interpolationRatio = keysPressed / numOfKeys;
             MovePlayer(interpolationRatio);
-            if(interpolationRatio == 1)
+            if(interpolationRatio >= 1)
             {
                 keysPressed = 0;
                 indexPos += 1;
-                Debug.Log(indexPos);
                 canWalk = false;
                 if (indexPos < playerPos.Count - 1)
                 {

@@ -8,14 +8,40 @@ public class ScoreCount : MonoBehaviour
 {
     [SerializeField] Transform camera;
     [SerializeField] Transform cameraPos;
-    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private GameObject sousage;
+    [SerializeField] private GameObject sdoba;
+    [SerializeField] private GameObject what1;
+    [SerializeField] private GameObject what2;
     
 
     public void CalculateScore()
     {
-        camera.transform.position = cameraPos.position;
-        int temp = 3;
-        string score = $"Your Score is {temp}";
-        scoreText.text = score;
+        VisualizeScore();
+        camera.position = cameraPos.position;
+    }
+    private bool sousagePresent = false;
+    private bool sdobaPresent = false;
+    private void VisualizeScore()
+    {
+        if(sousagePresent)
+        {
+            sousage.SetActive(true);
+            what1.SetActive(false);
+        }
+        else
+        {
+            sousage.SetActive(false);
+            what1.SetActive(true);
+        }
+        if (sdobaPresent)
+        {
+            sdoba.SetActive(true);
+            what2.SetActive(false);
+        }
+        else
+        {
+            sdoba.SetActive(false);
+            what2.SetActive(true);
+        }
     }
 }
