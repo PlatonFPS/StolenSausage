@@ -129,6 +129,18 @@ public class ScoreCount : MonoBehaviour
     private bool sausagePresent = false;
     private bool sdobaPresent = false;
     private float score = 0;
+    [SerializeField] GameObject firstZero;
+    [SerializeField] GameObject firstQuater;
+    [SerializeField] GameObject firstHalf;
+    [SerializeField] GameObject secondZero;
+    [SerializeField] GameObject secondQuater;
+    [SerializeField] GameObject secondHalf;
+    [SerializeField] GameObject saladZero;
+    [SerializeField] GameObject saladOne;
+    [SerializeField] GameObject sausageZero;
+    [SerializeField] GameObject sausageOneAndHalf;
+    [SerializeField] GameObject sdobaZero;
+    [SerializeField] GameObject sdobaOneAndHalf;
     private void VisualizeScore()
     {
         if(sausagePresent)
@@ -154,54 +166,72 @@ public class ScoreCount : MonoBehaviour
         switch (firstScore)
         {
             case 0:
-
+                firstZero.SetActive(true);
                 break;
             case 1:
+                firstQuater.SetActive(true);
                 score += 0.25f;
                 break;
             case 2:
+                firstHalf.SetActive(true);
                 score += 0.5f;
                 break;
         }
         switch (secondScore)
         {
             case 0:
-
+                secondZero.SetActive(true);
                 break;
             case 1:
+                secondQuater.SetActive(true);
                 score += 0.25f;
                 break;
             case 2:
+                secondHalf.SetActive(true);
                 score += 0.5f;
                 break;
         }
         switch (saladScore)
         {
             case 0:
-
+                saladZero.SetActive(true);
                 break;
             case 1:
+                saladOne.SetActive(true);
                 score += 1;
                 break;
         }
         switch (sausageScore)
         {
             case 0:
-
+                sausageZero.SetActive(true);
                 break;
             case 1:
+                sausageOneAndHalf.SetActive(true);
                 score += 1.5f;
                 break;
         }
         switch (sdobaScore)
         {
             case 0:
-
+                sdobaZero.SetActive(true);
                 break;
             case 1:
+                sdobaOneAndHalf.SetActive(true);
                 score += 1.5f;
                 break;
         }
-        Debug.Log(score);
+        switch (score)
+        {
+            case <= 2f:
+                //1
+                break;
+            case <= 4f:
+                //2
+                break;
+            case <= 5f:
+                //3
+                break;
+        }
     }
 }
