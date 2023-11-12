@@ -9,13 +9,10 @@ public class SectionControl : MonoBehaviour
     [SerializeField] List<Section> sections = new List<Section>();
     private int indexSection = -1;
     private Vector3 cameraPos = Vector3.zero;
-    private void Awake()
-    {
-        cameraPos = camera.position;
-    }
     public void SwitchSections()
     {
         indexSection++;
+        cameraPos = camera.position;
         camera.transform.position = sections[indexSection].cameraPosition;
         timer = sections[indexSection].timeToComplete;
         timerIsActive = true;

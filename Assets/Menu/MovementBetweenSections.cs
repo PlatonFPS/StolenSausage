@@ -11,7 +11,7 @@ public class MovementBetweenSections : MonoBehaviour
     [SerializeField] ScoreCount scoreCount;
     private float keysPressed = 0;
     private int indexPos = 0;
-    public bool canWalk = true;
+    public bool canWalk = false;
     private SectionControl sectionControl;
     private void Awake()
     {
