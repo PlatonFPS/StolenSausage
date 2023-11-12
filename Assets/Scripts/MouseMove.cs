@@ -125,6 +125,24 @@ public class MouseMove : MonoBehaviour
                                 return;
                             }
                         }
+                        if(holdObject.tag == "Knife" && results[0].tag == "Sausage")
+                        {
+                            if (!results[0].GetComponent<Cut>().cut)
+                            {
+                                results[0].GetComponent<Cut>().CutToPieces();
+                                holdObject.gameObject.SetActive(false);
+                                return;
+                            }
+                        }
+                        if(holdObject.tag == "Sausage" && results[0].tag == "FirstMeal")
+                        {
+                            if (holdObject.GetComponent<Cut>().cut && !results[0].GetComponent<FoodState>().concealed)
+                            {
+                                results[0].GetComponent<Throw>().ThrowSausageIn();
+                                holdObject.gameObject.SetActive(false);
+                                return;
+                            }
+                        }
                     }
                 }
             }
