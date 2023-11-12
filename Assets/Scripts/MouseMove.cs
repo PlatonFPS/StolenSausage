@@ -30,7 +30,7 @@ public class MouseMove : MonoBehaviour
             MoveObject();
         }
     }
-
+    [SerializeField] float angle;
     void MoveObject()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
