@@ -114,6 +114,10 @@ public class MouseMove : MonoBehaviour
                         platter.AddObject(holdObject.gameObject);
                         return;
                     }
+                    else if(results.Count == 3)
+                    {
+                        
+                    }
                 }
             }
             ResetPosition();

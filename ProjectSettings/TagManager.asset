@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fork
+  - Spoon
+  - Knife
+  - Rag
+  - Salad
+  - Sdoba
+  - Sausage
+  - FirstMeal
+  - SecondMeal
   layers:
   - Default
   - TransparentFX
