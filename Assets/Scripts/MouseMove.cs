@@ -107,7 +107,7 @@ public class MouseMove : MonoBehaviour
         {
             if (results.Count > 1)
             {
-                if (results[results.Count - 2].name == "Platter" && results[results.Count - 1].name == "Table")
+                if (results[results.Count - 2].tag == "Platter" && results[results.Count - 1].tag == "Table")
                 {
                     if (results.Count == 2)
                     {
@@ -116,7 +116,11 @@ public class MouseMove : MonoBehaviour
                     }
                     else if(results.Count == 3)
                     {
-                        
+                        if(holdObject.tag == "Rag" && results[0].tag == "Sdoba")
+                        {
+                            
+                            return;
+                        }
                     }
                 }
             }

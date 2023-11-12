@@ -34,14 +34,17 @@ public class MainMenu : MonoBehaviour
                 timerIsActive = false;
                 if(gameStarted)
                 {
+                    gameStarted = false;
                     StartGameAfterDelay();
                 }
                 if(settingsStarted)
                 {
+                    settingsStarted = false;
                     StartSettingsAfterDelay();
                 }
                 if(titlesStarted)
                 {
+                    titlesStarted = false;
                     StartTitlesAfterDelay();
                 }
             }
@@ -64,7 +67,7 @@ public class MainMenu : MonoBehaviour
     {
         camera.position = cameraPos.position;
         movementBetweenSections.canWalk = true;
-        gameStarted = false;
+        gameObject.SetActive(false);
     }
     private bool settingsStarted = false;
     public void StartSettings()
@@ -78,7 +81,6 @@ public class MainMenu : MonoBehaviour
     private void StartSettingsAfterDelay()
     {
         Debug.Log("Settings");
-        settingsStarted = false;
     }
     private bool titlesStarted = false;
     public void StartTitles()
@@ -92,6 +94,5 @@ public class MainMenu : MonoBehaviour
     private void StartTitlesAfterDelay()
     {
         Debug.Log("Titles");
-        titlesStarted = false;
     }
 }
