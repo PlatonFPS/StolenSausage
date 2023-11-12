@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e174772b6887d024bae868cb0f5c0b08, type: 3}
-  m_Name: TestSection
+  m_Name: ThirdSection
   m_EditorClassIdentifier: 
-  timeToComplete: 3
-  cameraPosition: {x: 55, y: 0, z: -10}
-  platterStart: {x: 50.85, y: -1.85, z: -0.01}
-  platterEnd: {x: 59.57, y: -1.85, z: -0.01}
+  timeToComplete: 10
+  cameraPosition: {x: 90, y: 0, z: -10}
+  platterStart: {x: 86, y: -2, z: -0.01}
+  platterEnd: {x: 94, y: -2, z: -0.01}
