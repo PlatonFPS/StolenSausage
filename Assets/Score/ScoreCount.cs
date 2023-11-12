@@ -141,6 +141,9 @@ public class ScoreCount : MonoBehaviour
     [SerializeField] GameObject sausageOneAndHalf;
     [SerializeField] GameObject sdobaZero;
     [SerializeField] GameObject sdobaOneAndHalf;
+    [SerializeField] GameObject oneStar;
+    [SerializeField] GameObject twoStar;
+    [SerializeField] GameObject threeStar;
     private void VisualizeScore()
     {
         if(sausagePresent)
@@ -224,13 +227,13 @@ public class ScoreCount : MonoBehaviour
         switch (score)
         {
             case <= 2f:
-                //1
+                oneStar.SetActive(true);
                 break;
             case <= 4f:
-                //2
+                twoStar.SetActive(true);
                 break;
             case <= 5f:
-                //3
+                threeStar.SetActive(true);
                 break;
         }
     }
